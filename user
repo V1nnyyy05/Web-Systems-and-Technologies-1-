@@ -1,8 +1,9 @@
-Username
+users
+username
 
-admin_user
-adviser_user
-sudent_user
+student
+adiviser
+admin
 
 password
-password123
+123
