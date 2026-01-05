@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>For My Girlfriend 💘</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0f1021;
+    --card:#17182f;
+    --accent:#ff5c8a;
+    --accent-2:#ffd1dc;
+    --text:#f6f7fb;
+    --muted:#cfd3ea;
+    --glass:rgba(255,255,255,.08);
+    --ring:rgba(255,92,138,.35);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,"Noto Sans",sans-serif;
+    color:var(--text);
+    background: radial-gradient(1200px 800px at 80% -10%, #2a2b52 0%, var(--bg) 45%) no-repeat fixed;
+    overflow-x:hidden;
+  }
+
+  /* Floating hearts background */
+  .hearts{
+    position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0;
+  }
+  .heart{
+    position:absolute; width:18px; height:18px;
+    background:var(--accent);
+    transform:rotate(45deg);
+    opacity:.18; filter:blur(.2px);
+    animation: floatUp linear infinite;
+  }
+  .heart::before,.heart::after{
+    content:"";
+    position:absolute; width:18px; height:18px; background:var(--accent); border-radius:50%;
+  }
+  .heart::before{left:-9px}
+  .heart::after{top:-9px}
+  @keyframes floatUp{
+    from{transform:translateY(110vh) rotate(45deg); opacity:.15}
+    to{transform:translateY(-10vh) rotate(45deg); opacity:.35}
+  }
+  /* Generate multiple hearts with nth-child */
+  .heart:nth-child(1){left:5%; animation-duration:12s; animation-delay:-2s}
+  .heart:nth-child(2){left:12%; animation-duration:16s; animation-delay:-7s}
+  .heart:nth-child(3){left:20%; animation-duration:14s; animation-delay:-4s}
+  .heart:nth-child(4){left:28%; animation-duration:18s; animation-delay:-10s}
+  .heart:nth-child(5){left:36%; animation-duration:13s; animation-delay:-6s}
+  .heart:nth-child(6){left:44%; animation-duration:17s; animation-delay:-12s}
+  .heart:nth-child(7){left:52%; animation-duration:15s; animation-delay:-3s}
+  .heart:nth-child(8){left:60%; animation-duration:19s; animation-delay:-9s}
+  .heart:nth-child(9){left:70%; animation-duration:14s; animation-delay:-8s}
+  .heart:nth-child(10){left:82%; animation-duration:16s; animation-delay:-5s}
+  .heart:nth-child(11){left:90%; animation-duration:21s; animation-delay:-14s}
+  .heart:nth-child(12){left:96%; animation-duration:18s; animation-delay:-11s}
+
+  /* Layout */
+  .wrap{
+    position:relative; z-index:1;
+    max-width:980px; margin:0 auto; padding:28px 18px 60px;
+  }
+  header{
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+    text-align:center; padding:32px 18px 14px;
+  }
+  .tag{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:8px 14px; border-radius:999px; background:var(--glass);
+    border:1px solid var(--ring);
+    font-size:.9rem; color:var(--muted);
+    backdrop-filter: blur(6px);
+  }
+  h1{
+    margin:6px 0 0; font-size:clamp(28px,4vw,44px);
+    font-weight:800; letter-spacing:.5px;
+    background:linear-gradient(90deg, var(--text), var(--accent-2));
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .subtitle{margin:6px 0 0; color:var(--muted); font-weight:400}
+
+  /* Card */
+  .card{
+    margin:24px auto 0; padding:26px;
+    background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+    border:1px solid var(--glass); border-radius:28px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.05);
+  }
+  .row{display:grid; grid-template-columns:1.2fr .8fr; gap:20px}
+  @media (max-width:880px){ .row{grid-template-columns:1fr;}}
+  .love-note{
+    padding:22px; border-radius:20px; background:var(--card);
+    border:1px solid var(--glass);
+  }
+  .love-note h2{
+    margin:0 0 10px; font-size:clamp(20px,2.6vw,26px); font-weight:700;
+  }
+  .love-note p{ margin:10px 0; line-height:1.7; color:#e7e9ff; }
+  .love-note .sig{ margin-top:16px; color:var(--accent-2); font-weight:600 }
+
+  /* Reveal panel (pure CSS) */
+  .reveal{
+    margin-top:16px; border-radius:16px; border:1px dashed var(--ring); padding:14px 16px;
+    position:relative; overflow:hidden;
+  }
+  .reveal a{ color:var(--accent-2); text-decoration:none; font-weight:600 }
+  .hidden-panel{
+    max-height:0; overflow:hidden; transition:max-height .6s ease;
+  }
+  /* Use :target to reveal content */
+  #secret:target{ max-height:300px }
+  .to{
+    font-weight:700; color:var(--accent-2); white-space:nowrap;
+  }
+
+  /* Gallery */
+  .gallery{
+    display:grid; gap:10px; grid-template-columns:repeat(2,1fr); 
+  }
+  @media (max-width:520px){ .gallery{grid-template-columns:1fr} }
+  .pic{
+    position:relative; border-radius:18px; overflow:hidden; aspect-ratio:4/3;
+    border:1px solid var(--glass); background:#101129;
+  }
+  .pic img{
+    width:100%; height:100%; object-fit:cover; display:block; filter:saturate(1.05) contrast(1.03);
+    transition: transform .6s ease;
+  }
+  .pic:hover img{ transform:scale(1.03) }
+  .label{
+    position:absolute; left:10px; bottom:10px; font-size:.85rem; padding:6px 10px;
+    background:rgba(15,16,33,.65); border:1px solid var(--glass); border-radius:999px; color:var(--muted);
+    backdrop-filter: blur(4px);
+  }
+
+  /* Timeline */
+  .timeline{
+    margin-top:18px; padding:16px; border-radius:16px; background:var(--glass);
+    border:1px solid var(--ring);
+  }
+  .titem{display:grid; grid-template-columns:110px 1fr; gap:14px; align-items:start; padding:10px 0}
+  .titem+.titem{border-top:1px dashed var(--glass)}
+  .date{color:var(--accent-2); font-weight:700}
+  .dot{display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--accent); margin-right:8px}
+
+  footer{
+    margin:26px auto 0; text-align:center; color:var(--muted);
+  }
+  .footer-heart{
+    display:inline-block; transform:translateY(2px) rotate(45deg);
+    width:12px;height:12px;background:var(--accent);
+  }
+  .footer-heart::before,.footer-heart::after{
+    content:""; position:absolute; width:12px;height:12px;border-radius:50%; background:var(--accent);
+  }
+  .footer-heart::before{transform:translate(-6px,0)}
+  .footer-heart::after{transform:translate(0,-6px)}
+</style>
+</head>
+<body>
+  <!-- Floating hearts -->
+  <div class="hearts" aria-hidden="true">
+    <div class="heart"></div><div class="heart"></div><div class="heart"></div>
+    <div class="heart"></div><div class="heart"></div><div class="heart"></div>
+    <div class="heart"></div><div class="heart"></div><div class="heart"></div>
+    <div class="heart"></div><div class="heart"></div><div class="heart"></div>
+  </div>
+
+  <div class="wrap">
+    <header>
+      <span class="tag">💌 A little page I made for you</span>
+      <h1>For <span class="to">HER NAME</span></h1>
+      <p class="subtitle">You are my favorite notification, my safe place, and my everyday miracle.</p>
+    </header>
+
+    <main class="card">
+      <div class="row">
+        <!-- Love note -->
+        <section class="love-note">
+          <h2>Hi Love,</h2>
+          <p>
+            Thank you for being the soft light to my busiest days and the peace to my noisy thoughts.
+            I’m proud of you—your heart, your grit, and the way you laugh at my corny jokes.
+          </p>
+          <p>
+            I’ll choose you in every version of tomorrow. Always. (Palagi kitang pipiliin.)
+          </p>
+
+          <div class="reveal">
+            <a href="#secret">Tap to reveal a tiny promise ↗</a>
+            <div id="secret" class="hidden-panel">
+              <p style="margin:12px 0 0">
+                I promise to listen more than I speak, hold your hand in storms and sunsets, and make
+                ordinary days feel like little celebrations—with you at the center.
+              </p>
+            </div>
+          </div>
+
+          <p class="sig">— YOUR NAME</p>
+
+          <div class="timeline">
+            <div class="titem">
+              <div class="date">01•14•2024</div>
+              <div><span class="dot"></span> The day I realized “home” is a person, not a place.</div>
+            </div>
+            <div class="titem">
+              <div class="date">06•02•2024</div>
+              <div><span class="dot"></span> Your laugh became my favorite sound.</div>
+            </div>
+            <div class="titem">
+              <div class="date">02•14•2025</div>
+              <div><span class="dot"></span> I started building this page for you. More memories to add. 💫</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Gallery -->
+        <aside class="gallery">
+          <figure class="pic">
+            <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=1600&auto=format&fit=crop" alt="Coffee date">
+            <figcaption class="label">Coffee date</figcaption>
+          </figure>
+          <figure class="pic">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1600&auto=format&fit=crop" alt="Sunset walk">
+            <figcaption class="label">Sunset walk</figcaption>
+          </figure>
+          <figure class="pic">
+            <img src="https://images.unsplash.com/photo-1514511547117-f9c3b5b0d3d2?q=80&w=1600&auto=format&fit=crop" alt="Goofy selfies">
+            <figcaption class="label">Goofy selfies</figcaption>
+          </figure>
+          <figure class="pic">
+            <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=1600&auto=format&fit=crop" alt="Our chill day">
+            <figcaption class="label">Our chill day</figcaption>
+          </figure>
+        </aside>
+      </div>
+    </main>
+
+    <footer>
+      Made with <span class="footer-heart"></span> by YOUR NAME · “Mahal kita, today and always.”
+    </footer>
+  </div>
+</body>
+</html>
